@@ -1,0 +1,17 @@
+<template>
+<div id="wrapper">
+	<div id="drag-target">
+		<div class="dragged-element" repeat.for="item of droppedItems">
+			<div class="img-wrap">
+				<img src="${item.src}">
+				<strong>${item.type === 'cat' ? 'Cat' : 'Dog'}</strong>
+			</div>
+		</div>
+	</div>
+
+	<div id="drag-source">
+		<a href="javascript:void(0);" data-type="cat">Random Cat</a>
+		<a href="javascript:void(0);" data-type="dog">Random Dog</a>
+	</div>
+</div>
+</template>

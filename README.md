@@ -1,2 +1,2 @@
 # aurelia-sortable-integration
-An example application that is a companion to my blog post on integrating the Sortable library into your applications. A mock random dog/cat generator.
+An example application that is a companion to my blog post on integrating the Sortable library into your applications. A mock random dog/cat generator. The blog post can be read here: http://ilikekillnerds.com/2015/09/aurelia-and-dragdrop-using-sortable/

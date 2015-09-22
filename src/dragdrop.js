@@ -67,28 +67,18 @@ export class DragDrop {
         // Events for when sorting takes place, we need to update the array to let
         // Aurelia know that changes have taken place and our repeater is up-to-date
         this.eventAggregator.subscribe('dragTarget.onUpdate', evt => {
-            // Source container
-            let src = evt.from;
-
-            // Destination "target" container
-            let dest = evt.to;
-
             // The item being dragged
             let el = evt.item;
+			
+			// Old index position of item
+            let oldIndex = evt.oldIndex;
 
             // New index position of item
-            let newIndex = evt.newIndex - 1;
-
-            // Old index position of item
-            let oldIndex = evt.oldIndex - 1;
+            let newIndex = evt.newIndex;
 
             // If item isn't being dropped into its original place
             if (newIndex != oldIndex) {
-                // Find the old item in the droppedItems array
-                let itemToRemove = this.droppedItems[oldIndex];
-
-                this.droppedItems.splice(oldIndex, 1);
-                this.droppedItems.splice(newIndex, 0, itemToRemove);
+				swapArrayElements(this.droppedItems, newIndex, oldIndex);
 
                 evt.item.parentElement.removeChild(evt.item);
             }
@@ -138,4 +128,10 @@ export class DragDrop {
             }
         });
     }
+}
+
+function swapArrayElements(theArray, a, b) {
+	var temp = theArray[a];
+    theArray[a] = theArray[b];
+    theArray[b] = temp;
 }
